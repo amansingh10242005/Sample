@@ -1,0 +1,299 @@
+/* CSS Reset & Variables */
+:root {
+    --primary-color: #4F46E5;
+    --primary-hover: #4338CA;
+    --secondary-color: #10B981;
+    --background-color: #EEF2FF;
+    --card-bg: #FFFFFF;
+    --text-main: #1F2937;
+    --text-muted: #6B7280;
+    --border-color: #E5E7EB;
+    --input-bg: #F9FAFB;
+    --error-color: #EF4444;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --transition-speed: 0.2s;
+    --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    line-height: 1.5;
+}
+
+/* Layout */
+.app-container {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.app-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: -0.025em;
+    margin-bottom: 0.25rem;
+}
+
+.app-subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* Card */
+.card {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: 2rem;
+    width: 100%;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Inputs */
+.input-group {
+    margin-bottom: 1.25rem;
+}
+
+.input-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+}
+
+.input-wrapper, .select-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper input, .select-wrapper select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-family: var(--font-family);
+    color: var(--text-main);
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-speed);
+    appearance: none;
+}
+
+/* Icon & Currency positioning */
+.input-wrapper input {
+    padding-left: 2.5rem; /* Space for icon */
+}
+
+.currency-symbol, .input-icon {
+    position: absolute;
+    left: 1rem;
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.currency-symbol {
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.select-wrapper .chevron-down {
+    position: absolute;
+    right: 1rem;
+    color: var(--text-muted);
+    pointer-events: none;
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/* Focus States */
+.input-wrapper input:focus, .select-wrapper select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+/* Remove Arrows from Number Input */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Button */
+.calculate-btn {
+    width: 100%;
+    padding: 0.875rem;
+    margin-top: 0.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform 0.1s;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.calculate-btn:hover {
+    background-color: var(--primary-hover);
+}
+
+.calculate-btn:active {
+    transform: scale(0.98);
+}
+
+/* Error Message */
+.error-message {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--error-color);
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background-color: #FEF2F2;
+    border-radius: var(--radius-md);
+    border: 1px solid #FECACA;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Results */
+.results-container {
+    margin-top: 2rem;
+    background-color: #F8FAFC; /* slightly different bg for contrast */
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+
+.result-row:last-child {
+    margin-bottom: 0;
+}
+
+.result-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.label-main {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.label-sub {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.result-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.result-divider {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 1rem 0;
+    border-style: dashed;
+}
+
+.total-row .label-main {
+    font-size: 1.1rem;
+}
+
+.total-row .result-value {
+    color: var(--secondary-color);
+    font-size: 2rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    opacity: 0.8;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsiveness */
+@media (max-width: 480px) {
+    .app-title {
+        font-size: 1.5rem;
+    }
+    
+    .card {
+        padding: 1.5rem;
+    }
+
+    .result-value {
+        font-size: 1.25rem;
+    }
+
+    .total-row .result-value {
+        font-size: 1.75rem;
+    }
+}

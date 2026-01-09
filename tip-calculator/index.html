@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Calculator</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <header>
+            <h1 class="app-title">Tip Calculator</h1>
+            <p class="app-subtitle">Calculate tips accurately & effortlessly</p>
+        </header>
+
+        <main>
+            <div class="card calculator-card">
+                <!-- Input Section -->
+                <div class="input-group">
+                    <label for="billAmount" class="input-label">Bill Amount</label>
+                    <div class="input-wrapper">
+                        <span class="currency-symbol">₹</span>
+                        <input type="number" id="billAmount" placeholder="Enter bill amount" min="0" step="0.01">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="serviceQuality" class="input-label">Service Quality</label>
+                    <div class="select-wrapper">
+                        <select id="serviceQuality">
+                            <option value="" disabled selected>How was the service?</option>
+                            <option value="0.20">Excellent (20%)</option>
+                            <option value="0.15">Good (15%)</option>
+                            <option value="0.10">Average (10%)</option>
+                            <option value="0.05">Poor (5%)</option>
+                        </select>
+                        <svg class="chevron-down" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="peopleCount" class="input-label">Number of People</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        <input type="number" id="peopleCount" placeholder="Number of people" min="1" step="1">
+                    </div>
+                </div>
+
+                <div id="error-message" class="error-message hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    <span>Please enter valid values for all fields.</span>
+                </div>
+
+                <button id="calculateBtn" class="calculate-btn">
+                    Calculate Tip
+                </button>
+
+                <!-- Result Section -->
+                <div id="results" class="results-container hidden">
+                    <div class="result-row">
+                        <div class="result-label">
+                            <span class="label-main">Tip Amount</span>
+                            <span class="label-sub">/ person</span>
+                        </div>
+                        <div class="result-value" id="tipPerPerson">₹0.00</div>
+                    </div>
+
+                    <div class="result-row">
+                        <div class="result-label">
+                            <span class="label-main">Total Bill</span>
+                            <span class="label-sub">/ person</span>
+                        </div>
+                        <div class="result-value" id="totalPerPerson">₹0.00</div>
+                    </div>
+
+                    <div class="result-divider"></div>
+
+                    <div class="result-row total-row">
+                        <span class="label-main">Grand Total</span>
+                        <div class="result-value highlight" id="grandTotal">₹0.00</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Tip Calculator. Designed with precision.</p>
+        </footer>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
